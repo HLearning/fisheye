@@ -29,25 +29,25 @@ def undistort(src,r):
 
     for dst_y in range(0, R):
 
-        sita =  Pi - (Pi/R)*dst_y
-        tempsita = math.tan(sita)**2
+        theta =  Pi - (Pi/R)*dst_y
+        temp_theta = math.tan(theta)**2
 
         for dst_x in range(0, R):
             # 取坐标点 p[i][j]
             # 计算 sita 和 fi
 
-            fi = Pi - (Pi/R)*dst_x
-            tempfi = math.tan(fi)**2
+            phi = Pi - (Pi/R)*dst_x
+            temp_phi = math.tan(phi)**2
 
-            tempu = r/(tempfi+ 1 + tempfi/tempsita)**0.5
-            tempv = r/(tempsita + 1 + tempsita/tempfi)**0.5
+            tempu = r/(temp_phi+ 1 + temp_phi/temp_theta)**0.5
+            tempv = r/(temp_theta + 1 + temp_theta/temp_phi)**0.5
 
-            if (fi < Pi/2):
+            if (phi < Pi/2):
                 u = x0 + tempu
             else:
                 u = x0 - tempu
 
-            if (sita < Pi/2):
+            if (theta < Pi/2):
                 v = y0 + tempv
             else:
                 v = y0 - tempv

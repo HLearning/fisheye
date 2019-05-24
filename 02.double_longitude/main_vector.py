@@ -30,14 +30,14 @@ def undistort(src,r):
     # 数组， 循环每个点
     range_arr = np.array([range(R)])
 
-    sita = Pi - (Pi/R)*(range_arr.T)
-    tempsita = np.tan(sita)**2
+    theta = Pi - (Pi/R)*(range_arr.T)
+    temp_theta = np.tan(theta)**2
 
-    fi = Pi - (Pi/R)*range_arr
-    tempfi = np.tan(fi)**2
+    phi = Pi - (Pi/R)*range_arr
+    temp_phi = np.tan(phi)**2
 
-    tempu = r/(tempfi + 1 + tempfi/tempsita)**0.5
-    tempv = r/(tempsita + 1 + tempsita/tempfi)**0.5
+    tempu = r/(temp_phi + 1 + temp_phi/temp_theta)**0.5
+    tempv = r/(temp_theta + 1 + temp_theta/temp_phi)**0.5
 
     # 用于修正正负号
     flag = np.array([-1] * r + [1] * r)
